@@ -24,7 +24,7 @@ device_cloud_service = config('DEVICE_CLOUD')
 device_platform_name = config('DEVICE_PLATFORM')
 
 # Check if there is a config file override. If not, use the default
-try: 
+try:
     config_file_path = config('CONFIG_FILE_OVERRIDE')
 except:
     config_file_path = os.path.join(os.path.dirname(__file__), '..', "config.json")
@@ -52,10 +52,11 @@ def before_feature(context, feature):
     context.verifier = aif.create_verifier_agent_interface(verifier_type, verifier_endpoint)
     context.print_page_source_on_failure = eval(context.config.userdata['print_page_source_on_failure'])
     context.print_qr_code_on_creation = eval(context.config.userdata['print_qr_code_on_creation'])
-    context.save_qr_code_on_creation = True if device_cloud_service == 'LocalAndroid' or device_cloud_service == 'LambdaTest' else eval(context.config.userdata['save_qr_code_on_creation'])
+    context.save_qr_code_on_creation = True if device_cloud_service == 'LocalAndroid' or device_cloud_service == 'LambdaTest' else eval(
+        context.config.userdata['save_qr_code_on_creation'])
 
     # retry failed tests 
-    try: 
+    try:
         test_retry_attempts = int(config('TEST_RETRY_ATTEMPTS_OVERRIDE'))
     except:
         test_retry_attempts = int(eval(context.config.userdata['test_retry_attempts']))
@@ -63,11 +64,10 @@ def before_feature(context, feature):
         patch_scenario_with_autoretry(scenario, max_attempts=test_retry_attempts)
 
 
-
 def before_scenario(context, scenario):
     # TODO go through the sceanrio tags and find the unique id, starts with T, and prefix it to the name. 
     # maybe put the feature in it as well like Feature:TestID:Scenario
-    
+
     # pass some extra capabilities and options to the device service. If it can't do anything with them then fine.
     # ie. Local devices won't do anything with a scenario name.
     # TODO fullReset may have to be moved to the config files, if dev starts to use the Test Harness they may
@@ -80,11 +80,10 @@ def before_scenario(context, scenario):
     context.driver = device_service_handler.initialize_driver()
 
     print("\nActual Capabilities used by Appium:")
-    print(json.dumps(context.driver.capabilities,indent=4))
+    print(json.dumps(context.driver.capabilities, indent=4))
 
 
 def after_scenario(context, scenario):
-
     if hasattr(context, 'driver') and scenario.status == Status.failed and context.print_page_source_on_failure:
         print(context.driver.page_source)
 
@@ -93,8 +92,6 @@ def after_scenario(context, scenario):
             device_service_handler.set_test_result(False)
         elif scenario.status == Status.passed:
             device_service_handler.set_test_result(True)
-
-
 
         if device_cloud_service == 'SauceLabs':
             # Add the sauce Labs results and video url to the allure results
@@ -105,7 +102,8 @@ def after_scenario(context, scenario):
 
             # Since every test scenario is a new session with potentially a different device
             # write the capabilities info as an attachment to the test scenario to keep track
-            allure.attach(json.dumps(context.driver.capabilities,indent=4), "Complete Appium/Sauce Labs Test Environment Configuration")
+            allure.attach(json.dumps(context.driver.capabilities, indent=4),
+                          "Complete Appium/Sauce Labs Test Environment Configuration")
 
             # Link does not require a sauce labs account and login. Token generated.
             # # TODO This isn't working. Have contacted Sauce Labs. 
@@ -118,7 +116,7 @@ def after_scenario(context, scenario):
             # print(f"Public Sauce Labs Report and Video (Login not required): {url} (Nonfunctional at this time)")
 
         # elif device_cloud_service == "LambdaTest":
-            # TODO 
+        # TODO
 
         # if context.driver.capabilities['platformName'] == "iOS":
         #     context.driver.close_app()
@@ -135,5 +133,3 @@ def after_scenario(context, scenario):
 #     # if context does not contain browser then something went wrong on initialization and no need to call quit.
 #     if hasattr(context, 'driver'):
 #         context.driver.quit()
-
-

@@ -5,6 +5,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from pageobjects.basepage import BasePage
 from pageobjects.bifold.home import HomePage
 
+
 class PINSetupPage(BasePage):
     """PIN Setup page object"""
 
@@ -35,4 +36,4 @@ class PINSetupPage(BasePage):
             # return a new page object? The Home page.
             return HomePage(self.driver)
         else:
-            raise Exception(f"App not on the {self.title_locator} page") 
+            raise Exception(f"App not on the {self.title_locator} page")

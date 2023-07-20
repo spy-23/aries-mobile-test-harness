@@ -58,4 +58,3 @@ class AATHAgentInterface():
         else:
             connection_id = self.invitation_json['connection_id']
         return expected_agent_state(self.endpoint, "connection", connection_id, "complete", sleep_time=2.0)
-

@@ -1,8 +1,8 @@
-behave
+behave~=1.2.6
 allure-behave
 #behave==1.2.6
 browserstack-local==1.2.2
-SauceClient
+SauceClient~=1.0.0
 paver==1.3.4
 #selenium==3.141.0
 selenium==4.9.0
@@ -15,4 +15,9 @@ webdriver-manager==3.8.3
 google-api-python-client
 google-auth-httplib2
 google-auth-oauthlib
-aiohttp
+aiohttp~=3.8.4
+
+decouple~=0.0.7
+Pillow~=9.5.0
+requests~=2.31.0
+acapy~=1.0.0
