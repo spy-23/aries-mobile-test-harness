@@ -1,3 +1,4 @@
+# https://app.zenhub.com/workspaces/bc-wallet-6148e7423fe04b001444e2bd/issues/bcgov/bc-wallet-mobile/8
 @Onboarding @bc_wallet @Story_8 @normal
 Feature: Onboarding
   In order to understand how the app works
