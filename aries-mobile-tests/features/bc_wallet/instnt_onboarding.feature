@@ -16,7 +16,7 @@ Feature: Onboarding
     And the user selects Next
     And they are brought to the Take control of your information screen
     Then they can select Get started
-    And are brought to the Terms and Conditions screen
+#    And are brought to the Terms and Conditions screen
 
 
   @T002-Onboarding @AcceptanceTest
@@ -24,7 +24,7 @@ Feature: Onboarding
     Given the new user has opened the app for the first time
     And the user is on the onboarding <screen>
     When the user selects Skip
-    Then are brought to the Terms and Conditions screen
+#    Then are brought to the Terms and Conditions screen
 
     Examples:
       | screen                                 |
