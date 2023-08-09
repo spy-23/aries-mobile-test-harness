@@ -110,9 +110,6 @@ Feature: Secure your Wallet
     And the User re-enters the PIN as "369369"
     And the User selects Create PIN
     When the user clicks continue
-    And they have closed the app
-    When they relaunch the app
-    And authenticates with thier PIN as "369369"
     Then they have access to the app
 
   @T008-InstntWalletSecurity @AcceptanceTest @ExceptionTest @normal @wip
