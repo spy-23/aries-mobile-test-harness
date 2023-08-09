@@ -96,7 +96,16 @@ Feature: Secure your Wallet
 
   @T007-InstntWalletSecurity @AcceptanceTest @ExceptionTest @normal @wip
   Scenario: New User Sets Up PIN but not biometrics and authenticates with PIN
-    Given the Holder has setup thier Wallet
+    Given the new user has opened the app for the first time
+    And the user is on the onboarding Welcome screen
+    When the user selects Next
+    And they are brought to the Store your credentials securely screen
+    And the user selects Next
+    And they are brought to the Share only what is neccessary screen
+    And the user selects Next
+    And they are brought to the Take control of your information screen
+    Then they can select Get started
+    When the user clicks continue
     And the Holder has selected to use PIN only to unlock BC Wallet
     And they have closed the app
     When they relaunch the app
