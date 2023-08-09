@@ -106,7 +106,6 @@ Feature: Secure your Wallet
     And they are brought to the Take control of your information screen
     Then they can select Get started
     When the user clicks continue
-    And the User is on the PIN creation screen
     When the User enters the first PIN as "369369"
     And the User re-enters the PIN as "369369"
     And the User selects Create PIN
