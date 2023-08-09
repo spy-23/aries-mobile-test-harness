@@ -109,6 +109,7 @@ Feature: Secure your Wallet
     When the User enters the first PIN as "369369"
     And the User re-enters the PIN as "369369"
     And the User selects Create PIN
+    When the user clicks continue
     And they have closed the app
     When they relaunch the app
     And authenticates with thier PIN as "369369"
