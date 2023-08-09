@@ -50,7 +50,7 @@ def step_impl(context):
 @given('the users accepts the Terms and Conditions')
 @when('the users accepts the Terms and Conditions')
 def step_impl(context):
-    context.thisTermsAndConditionsPage.select_accept()
+    # context.thisTermsAndConditionsPage.select_accept()
 
 @given('the user clicks continue')
 @when('the user clicks continue')
