@@ -18,7 +18,7 @@ class PINSetupPage(BasePage):
     create_pin_button_tid_locator = (
         AppiumBy.ID, "com.ariesbifold:id/CreatePIN")
     modal_message_title_locator = (
-        AppiumBy.ID, "com.ariesbifold:id/HeaderText")
+        AppiumBy.XPATH, "//android.view.ViewGroup[@content-desc='Create PIN']/android.widget.TextView")
     modal_message_body_locator = (AppiumBy.ID, "com.ariesbifold:id/BodyText")
     modal_message_ok_locator = (AppiumBy.ID, "com.ariesbifold:id/Okay")
 
